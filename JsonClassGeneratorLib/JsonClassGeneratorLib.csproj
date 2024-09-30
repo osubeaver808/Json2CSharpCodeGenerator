@@ -1,98 +1,88 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
     <DisableOutOfProcTaskHost>true</DisableOutOfProcTaskHost>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CC0CC10E-B4C3-4703-A331-E63FF20D20A1}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Xamasoft.JsonClassGenerator</RootNamespace>
     <AssemblyName>Xamasoft.JsonClassGenerator</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AssemblyTitle>Json Class Generator</AssemblyTitle>
+    <Company>Xamasoft</Company>
+    <Product>Json Class Generator</Product>
+    <Copyright>Copyright © Xamasoft 2010-2013</Copyright>
+    <AssemblyVersion>1.5.0.0</AssemblyVersion>
+    <FileVersion>1.5.0.0</FileVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CG.Pluralization, Version=0.3000.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CG.Pluralization.0.3000.12\lib\net40\CG.Pluralization.dll</HintPath>
-    </Reference>
-    <Reference Include="Humanizer, Version=2.14.0.0, Culture=neutral, PublicKeyToken=979442b78dfc278e, processorArchitecture=MSIL">
-      <HintPath>..\packages\Humanizer.Core.2.14.1\lib\netstandard2.0\Humanizer.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="CodeWriterConfiguration\BaseCodeWriterConfiguration.cs" />
-    <Compile Include="CodeWriterConfiguration\PythonCodeWriterConfig.cs" />
-    <Compile Include="CodeWriterConfiguration\JavaCodeWriterConfig.cs" />
-    <Compile Include="CodeWriterConfiguration\CSharpCodeWriterConfig.cs" />
-    <Compile Include="CodeWriterConfiguration\DartCodeWriterConfig.cs" />
-    <Compile Include="CodeWriterConfiguration\TypeScriptCodeWriterConfig.cs" />
-    <Compile Include="CodeWriterConfiguration\VisualBasicCodeWriterConfig.cs" />
-    <Compile Include="CodeWriters\JavaCodeWriter.cs" />
-    <Compile Include="CodeWriters\DartCodeWriter.cs" />
-    <Compile Include="CodeWriters\PythonCodeWriter.cs" />
-    <Compile Include="CodeWriters\TypeScriptCodeWriter.cs" />
-    <Compile Include="CodeWriters\VisualBasicCodeWriter.cs" />
-    <Compile Include="CodeWriters\CSharpCodeWriter.cs" />
-    <Compile Include="JsonFieldInfo.cs" />
-    <Compile Include="Extensions.cs" />
-    <Compile Include="CodeWriters\ICodeWriter.cs" />
-    <Compile Include="JsonClassGenerator.cs" />
-    <Compile Include="Models\JsonLibrairy.cs" />
-    <Compile Include="Models\JsonPropertyAttributeUsage.cs" />
-    <Compile Include="Models\OutputCollectionType.cs" />
-    <Compile Include="Models\OutputMembers.cs" />
-    <Compile Include="Models\OutputTypes.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
+    <Compile Update="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="JsonClassHelper.cs" />
-    <Compile Include="JsonType.cs" />
-    <Compile Include="Models\JsonTypeEnum.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
+    <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <ItemGroup>
+    <PackageReference Include="CG.Pluralization" Version="0.3000.12" />
+    <PackageReference Include="Humanizer" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.af" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.ar" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.az" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.bg" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.bn-BD" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.cs" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.da" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.de" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.el" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.es" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.fa" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.fi-FI" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.fr" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.fr-BE" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.he" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.hr" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.hu" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.hy" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.id" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.is" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.it" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.ja" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.ko-KR" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.ku" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.lv" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.ms-MY" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.mt" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.nb" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.nb-NO" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.nl" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.pl" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.pt" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.ro" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.ru" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.sk" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.sl" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.sr" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.sr-Latn" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.sv" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.th-TH" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.tr" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.uk" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.uz-Cyrl-UZ" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.uz-Latn-UZ" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.vi" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.zh-CN" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.zh-Hans" Version="2.14.1" />
+    <PackageReference Include="Humanizer.Core.zh-Hant" Version="2.14.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="JsonClassHelper.cs" />
+  </ItemGroup>
 </Project>
